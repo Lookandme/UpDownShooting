@@ -519,6 +519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armRenderer: {fileID: 340127216}
   armPivot: {fileID: 441850292}
+  arrowPivot: {fileID: 6355561064957409598, guid: 9e84ce30d3e96ba449f1fecfad7f1afc, type: 3}
   characterRenderer: {fileID: 915825046}
 --- !u!114 &250992786
 MonoBehaviour:

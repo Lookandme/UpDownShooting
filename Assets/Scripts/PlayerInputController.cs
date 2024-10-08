@@ -5,7 +5,7 @@ public class PlayerInputController : TopDownController
 {
     private Camera camera;
 
-    private void Awake()
+    protected override void Awake()
     {
         camera = Camera.main; // 메인 카메라 태그가 붙어있는 카메라를 가져온다
 
@@ -28,5 +28,6 @@ public class PlayerInputController : TopDownController
     public void OnFire(InputValue value)
     {
         IsAttacking = value.isPressed;
+        
     }
 }
