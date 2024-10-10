@@ -11,34 +11,35 @@ public class TopDownController : MonoBehaviour
 
     public event Action<Vector2> OnMoveEvent;  // action의 특징은 무조건 void만 반환 아니면 func를 사용해야한다
     public event Action<Vector2> OnLookEvent;
-    public event Action OnAttackEvent;         // Attack 이벤트는 눌렀다는 사실만 중요하니까 받는 부분이 없다.
+    public event Action<AttackSO> OnAttackEvent;         
 
-    protected bool IsAttacking {  get; set; }
 
     //protected 프로퍼티를 하는 이유 : 나만 바꾸고 싶지만 가져가는 건 내 상속 클래스들도 볼수 있게
     protected CharacterStatsHandler stats {  get; private set; }
 
     private float timeSinceLastAttack = float.MaxValue;
+    protected bool IsAttacking {  get; set; }
     protected virtual void Awake()
     {
         stats = GetComponent<CharacterStatsHandler>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         HandleAttackDelay();
     }
 
     private void HandleAttackDelay()
     {
-        if (timeSinceLastAttack <= stats.CurrentStat.attackSO.delay)        
+        
+        if (timeSinceLastAttack <= stats.CurrentStat.attackSO.delay)  
         {
             timeSinceLastAttack += Time.deltaTime;
         }
-        else if (IsAttacking && timeSinceLastAttack > stats.CurrentStat.attackSO.delay)
+        if (IsAttacking && timeSinceLastAttack > stats.CurrentStat.attackSO.delay)
         {
             timeSinceLastAttack = 0f;
-            CollAttackEvent();
+            CollAttackEvent(stats.CurrentStat.attackSO);
         }
     }
 
@@ -52,9 +53,9 @@ public class TopDownController : MonoBehaviour
     {
         OnLookEvent?.Invoke(direction);
     }
-    public void CollAttackEvent()
+    public void CollAttackEvent(AttackSO attackSO)
     {
-        OnAttackEvent?.Invoke();
+        OnAttackEvent?.Invoke(attackSO);
     }
 
    

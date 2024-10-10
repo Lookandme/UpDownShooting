@@ -1,13 +1,18 @@
-﻿using UnityEngine;
-
+﻿
+using UnityEngine;
 [CreateAssetMenu(fileName = "RangedAttackSO", menuName = "TopDownController/Attacks/Ranged", order = 1)]
+
+
 public class RangedAttackSO : AttackSO
 {
-    [Header("Ranged Attack Info")]
+    [Header("Ranged Attack Data")]
     public string bulletNameTag;
     public float duration;
     public float spread;
-    public int numberOfProjectilesPerShot;
+    public int numberofProjectilesPerShot;
     public float multipleProjectilesAngle;
     public Color projectileColor;
+
 }
+
+

@@ -27,6 +27,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void Move(Vector2 direction)
     {
+        
         movementDirection = direction;
     }
 
@@ -34,11 +35,13 @@ public class TopDownMovement : MonoBehaviour
     {
         //fixeUpdate는 물리 업데이트에 관련이 있다.
         //Rigidbody의 값을 바꾸니까 FixedUpdate
+       
         ApplyMovement(movementDirection);
     }
 
     private void ApplyMovement(Vector2 direction) 
     {
+        
         direction = direction * characterStatsHandler.CurrentStat.speed;
         movementRigidbody.velocity = direction;
     }

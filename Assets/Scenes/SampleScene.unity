@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 65659199}
   - component: {fileID: 65659201}
   - component: {fileID: 65659200}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ForntWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -318,7 +318,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 250514715}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +356,9 @@ GameObject:
   - component: {fileID: 250992784}
   - component: {fileID: 250992785}
   - component: {fileID: 250992786}
-  m_Layer: 0
+  - component: {fileID: 250992787}
+  - component: {fileID: 250992788}
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -375,6 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 058e8f056e5063246a8d333c92d1a245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
+  movementRigidbody: {fileID: 0}
+  characterStatsHandler: {fileID: 0}
+  movementDirection: {x: 0, y: 0}
 --- !u!114 &250992780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5842ad00f431c96469dde61d45f7fe08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <stats>k__BackingField: {fileID: 0}
+  timeSinceLastAttack: 3.4028235e+38
+  <IsAttacking>k__BackingField: 0
+  camera: {fileID: 0}
 --- !u!114 &250992781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,8 +529,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armRenderer: {fileID: 340127216}
   armPivot: {fileID: 441850292}
-  arrowPivot: {fileID: 6355561064957409598, guid: 9e84ce30d3e96ba449f1fecfad7f1afc, type: 3}
   characterRenderer: {fileID: 915825046}
+  controller: {fileID: 0}
 --- !u!114 &250992786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,8 +543,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5741c9a24853db419b2fc9e195e11a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  contoller: {fileID: 0}
   projectileSpawnPosition: {fileID: 250514715}
-  TestPrefab: {fileID: 8271386260588058334, guid: 9e84ce30d3e96ba449f1fecfad7f1afc, type: 3}
+  aimDirection: {x: 1, y: 0}
+  objectPool: {fileID: 0}
+  testPrefab: {fileID: 8271386260588058334, guid: 9e84ce30d3e96ba449f1fecfad7f1afc, type: 3}
+--- !u!114 &250992787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250992778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd6d7bc5211573e4b9fe58dd708319d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseStat:
+    statsChangeType: 2
+    maxHealth: 0
+    speed: 1
+    attackSO: {fileID: 11400000, guid: 5518056dde4aa6d47ac5e56bdabae8d8, type: 2}
+  StatModifiers: []
+--- !u!114 &250992788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 250992778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6abeffe3ccb611b41a82aeac17ca42d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: Arrow
+    prefab: {fileID: 8271386260588058334, guid: 9e84ce30d3e96ba449f1fecfad7f1afc, type: 3}
+    size: 20
 --- !u!1 &275623314
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +593,7 @@ GameObject:
   - component: {fileID: 275623315}
   - component: {fileID: 275623317}
   - component: {fileID: 275623316}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9527,7 +9574,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340127215}
   - component: {fileID: 340127216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9610,7 +9657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 441850292}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9736,7 +9783,7 @@ GameObject:
   m_Component:
   - component: {fileID: 915825045}
   - component: {fileID: 915825046}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MainSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9821,7 +9868,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1095057585}
   - component: {fileID: 1095057584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9870,7 +9917,7 @@ GameObject:
   - component: {fileID: 1609515184}
   - component: {fileID: 1609515186}
   - component: {fileID: 1609515185}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BackWall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10057,7 +10104,7 @@ GameObject:
   - component: {fileID: 1734278794}
   - component: {fileID: 1734278793}
   - component: {fileID: 1734278792}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Collsion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
